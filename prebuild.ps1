@@ -1,6 +1,10 @@
 # Register the required providers
 Register-AzResourceProvider -ProviderNamespace "Microsoft.PolicyInsights"
 Register-AzResourceProvider -ProviderNamespace "Microsoft.Compute"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.AppConfiguration"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ServiceLinker"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ContainerRegistry"
 
 # Register the required preview feature
 Register-AzProviderFeature -FeatureName "AutomaticSKUPreview" -ProviderNamespace "Microsoft.ContainerService"

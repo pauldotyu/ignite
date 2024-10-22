@@ -5,7 +5,7 @@ param nameSuffix string
 // param userObjectId string
 
 resource logWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
-  name: 'myLogs${take(uniqueString(nameSuffix), 4)}'
+  name: 'mylogs${take(uniqueString(nameSuffix), 4)}'
   location: resourceGroup().location
   identity: {
     type: 'SystemAssigned'
@@ -18,12 +18,12 @@ resource logWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
 }
 
 resource metricsWorkspace 'Microsoft.Monitor/accounts@2023-04-03' = {
-  name: 'myPrometheus${take(uniqueString(nameSuffix), 4)}'
+  name: 'myprometheus${take(uniqueString(nameSuffix), 4)}'
   location: resourceGroup().location
 }
 
 resource grafanaDashboard 'Microsoft.Dashboard/grafana@2023-09-01' = {
-  name: 'myGrafana${take(uniqueString(nameSuffix), 4)}'
+  name: 'mygrafana${take(uniqueString(nameSuffix), 4)}'
   location: resourceGroup().location
   sku: {
     name: 'Standard'
@@ -53,7 +53,7 @@ resource grafanaDashboard 'Microsoft.Dashboard/grafana@2023-09-01' = {
 // }
 
 resource aksCluster 'Microsoft.ContainerService/managedClusters@2024-03-02-preview' = {
-  name: 'myAKSCluster'
+  name: 'myakscluster'
   location: resourceGroup().location
   sku: {
     name: 'Automatic'
@@ -93,6 +93,27 @@ resource aksCluster 'Microsoft.ContainerService/managedClusters@2024-03-02-previ
   }
   identity: {
     type: 'SystemAssigned'
+  }
+}
+
+resource containerRegistry 'Microsoft.ContainerRegistry/registries@2023-11-01-preview' = {
+  name: 'mycontainerregistry${take(uniqueString(nameSuffix), 4)}'
+  location: resourceGroup().location
+  sku: {
+    name: 'Standard'
+  }
+  identity: {
+    type: 'SystemAssigned'
+  }
+}
+
+resource containerRegistryRoleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
+  name: guid(subscription().id, resourceGroup().id, containerRegistry.name, 'AcrPullRole')
+  scope: containerRegistry
+  properties: {
+    principalId: aksCluster.properties.identityProfile.kubeletIdentity.objectId
+    principalType: 'ServicePrincipal'
+    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', '7f951dda-4ed3-4680-a7ca-43fe172d538d')
   }
 }
 

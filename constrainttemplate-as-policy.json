@@ -16,7 +16,7 @@
         "details": {
           "templateInfo": {
             "sourceType": "Base64Encoded",
-            "content": "YXBpVmVyc2lvbjogdGVtcGxhdGVzLmdhdGVrZWVwZXIuc2gvdjFiZXRhMQpraW5kOiBDb25zdHJhaW50VGVtcGxhdGUKbWV0YWRhdGE6CiAgbmFtZTogazhzcmVxdWlyZWRyZWdpc3RyeQpzcGVjOgogIGNyZDoKICAgIHNwZWM6CiAgICAgIG5hbWVzOgogICAgICAgIGtpbmQ6IEs4c1JlcXVpcmVkUmVnaXN0cnkKICAgICAgdmFsaWRhdGlvbjoKICAgICAgICBvcGVuQVBJVjNTY2hlbWE6CiAgICAgICAgICBwcm9wZXJ0aWVzOgogICAgICAgICAgICBpbWFnZToKICAgICAgICAgICAgICB0eXBlOiBzdHJpbmcKICB0YXJnZXRzOgogICAgLSB0YXJnZXQ6IGFkbWlzc2lvbi5rOHMuZ2F0ZWtlZXBlci5zaAogICAgICByZWdvOiB8CiAgICAgICAgcGFja2FnZSBrOHNyZXF1aXJlZHJlZ2lzdHJ5CiAgICAgICAgdmlvbGF0aW9uW3sibXNnIjogbXNnLCAiZGV0YWlscyI6IHsiUmVnaXN0cnkgbXVzdCBiZSI6IHJlcXVpcmVkfX1dIHsKICAgICAgICAgIGlucHV0LnJldmlldy5vYmplY3Qua2luZCA9PSAiUG9kIgogICAgICAgICAgc29tZSBpCiAgICAgICAgICBpbWFnZSA6PSBpbnB1dC5yZXZpZXcub2JqZWN0LnNwZWMuY29udGFpbmVyc1tpXS5pbWFnZQogICAgICAgICAgcmVxdWlyZWQgOj0gaW5wdXQucGFyYW1ldGVycy5yZWdpc3RyeQogICAgICAgICAgbm90IHN0YXJ0c3dpdGgoaW1hZ2UscmVxdWlyZWQpCiAgICAgICAgICBtc2cgOj0gc3ByaW50ZigiRm9yYmlkZGVuIHJlZ2lzdHJ5OiAldiIsIFtpbWFnZV0pCiAgICAgICAgfQo="
+            "content": "YXBpVmVyc2lvbjogdGVtcGxhdGVzLmdhdGVrZWVwZXIuc2gvdjFiZXRhMQpraW5kOiBDb25zdHJhaW50VGVtcGxhdGUKbWV0YWRhdGE6CiAgbmFtZTogazhzcmVxdWlyZWRyZWdpc3RyeQpzcGVjOgogIGNyZDoKICAgIHNwZWM6CiAgICAgIG5hbWVzOgogICAgICAgIGtpbmQ6IEs4c1JlcXVpcmVkUmVnaXN0cnkKICAgICAgdmFsaWRhdGlvbjoKICAgICAgICBvcGVuQVBJVjNTY2hlbWE6CiAgICAgICAgICBwcm9wZXJ0aWVzOgogICAgICAgICAgICByZWdpc3RyeToKICAgICAgICAgICAgICB0eXBlOiBzdHJpbmcKICB0YXJnZXRzOgogICAgLSB0YXJnZXQ6IGFkbWlzc2lvbi5rOHMuZ2F0ZWtlZXBlci5zaAogICAgICByZWdvOiB8CiAgICAgICAgcGFja2FnZSBrOHNyZXF1aXJlZHJlZ2lzdHJ5CiAgICAgICAgdmlvbGF0aW9uW3sibXNnIjogbXNnLCAiZGV0YWlscyI6IHsiUmVnaXN0cnkgbXVzdCBiZSI6IHJlcXVpcmVkfX1dIHsKICAgICAgICAgIGlucHV0LnJldmlldy5vYmplY3Qua2luZCA9PSAiUG9kIgogICAgICAgICAgc29tZSBpCiAgICAgICAgICBpbWFnZSA6PSBpbnB1dC5yZXZpZXcub2JqZWN0LnNwZWMuY29udGFpbmVyc1tpXS5pbWFnZQogICAgICAgICAgcmVxdWlyZWQgOj0gaW5wdXQucGFyYW1ldGVycy5yZWdpc3RyeQogICAgICAgICAgbm90IHN0YXJ0c3dpdGgoaW1hZ2UscmVxdWlyZWQpCiAgICAgICAgICBtc2cgOj0gc3ByaW50ZigiRm9yYmlkZGVuIHJlZ2lzdHJ5OiAldiIsIFtpbWFnZV0pCiAgICAgICAgfQo="
           },
           "apiGroups": [
             ""
@@ -28,7 +28,7 @@
           "excludedNamespaces": "[parameters('excludedNamespaces')]",
           "labelSelector": "[parameters('labelSelector')]",
           "values": {
-            "image": "[parameters('image')]"
+            "registry": "[parameters('registry')]"
           }
         }
       }
@@ -126,7 +126,7 @@
           "additionalProperties": false
         }
       },
-      "image": {
+      "registry": {
         "type": "String",
         "metadata": {
           "displayName": "Image registry",
