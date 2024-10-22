@@ -5,7 +5,7 @@ param nameSuffix string
 // param userObjectId string
 
 resource logWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
-  name: 'logs-${uniqueString(nameSuffix)}'
+  name: 'myLogs${take(uniqueString(nameSuffix), 4)}'
   location: resourceGroup().location
   identity: {
     type: 'SystemAssigned'
@@ -18,12 +18,12 @@ resource logWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
 }
 
 resource metricsWorkspace 'Microsoft.Monitor/accounts@2023-04-03' = {
-  name: 'metrics-${uniqueString(nameSuffix)}'
+  name: 'myPrometheus${take(uniqueString(nameSuffix), 4)}'
   location: resourceGroup().location
 }
 
 resource grafanaDashboard 'Microsoft.Dashboard/grafana@2023-09-01' = {
-  name: 'grafana-${uniqueString(nameSuffix)}'
+  name: 'myGrafana${take(uniqueString(nameSuffix), 4)}'
   location: resourceGroup().location
   sku: {
     name: 'Standard'
@@ -53,7 +53,7 @@ resource grafanaDashboard 'Microsoft.Dashboard/grafana@2023-09-01' = {
 // }
 
 resource aksCluster 'Microsoft.ContainerService/managedClusters@2024-03-02-preview' = {
-  name: 'aks-${uniqueString(nameSuffix)}'
+  name: 'myAKSCluster'
   location: resourceGroup().location
   sku: {
     name: 'Automatic'
