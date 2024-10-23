@@ -5,6 +5,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 Register-AzResourceProvider -ProviderNamespace "Microsoft.AppConfiguration"
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ServiceLinker"
 Register-AzResourceProvider -ProviderNamespace "Microsoft.ContainerRegistry"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.KubernetesConfiguration"
 
 # Register the required preview feature
 Register-AzProviderFeature -FeatureName "AutomaticSKUPreview" -ProviderNamespace "Microsoft.ContainerService"
@@ -24,24 +25,6 @@ while ($true) {
 # Loop to check the registration status of the preview feature
 while ($true) {
     $status = Get-AzProviderFeature -FeatureName "AutomaticSKUPreview" -ProviderNamespace "Microsoft.ContainerService"
-    Write-Output "$($status.FeatureName) is still $($status.RegistrationState)"
-    if ($status.RegistrationState -eq "Registered") {
-        break
-    }
-    Start-Sleep -Seconds 10
-}
-
-while ($true) {
-    $status = Get-AzProviderFeature -FeatureName "EnableImageIntegrityPreview" -ProviderNamespace "Microsoft.ContainerService"
-    Write-Output "$($status.FeatureName) is still $($status.RegistrationState)"
-    if ($status.RegistrationState -eq "Registered") {
-        break
-    }
-    Start-Sleep -Seconds 10
-}
-
-while ($true) {
-    $status = Get-AzProviderFeature -FeatureName "AKS-AzurePolicyExternalData" -ProviderNamespace "Microsoft.ContainerService"
     Write-Output "$($status.FeatureName) is still $($status.RegistrationState)"
     if ($status.RegistrationState -eq "Registered") {
         break
