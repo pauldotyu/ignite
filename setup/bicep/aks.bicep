@@ -410,3 +410,4 @@ resource prometheusNodeRules 'Microsoft.AlertsManagement/prometheusRuleGroups@20
 
 output grafanaId string = grafanaDashboard.id
 output aksId string = aksCluster.id
+output containerRegistryLoginServer string = '${containerRegistry.name}.azurecr.io'

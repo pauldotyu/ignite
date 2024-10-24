@@ -1,5 +1,5 @@
-New-AzRoleAssignment -SignInName '@lab.CloudPortalCredential(User1).Username' -RoleDefinitionName 'Azure Kubernetes Service RBAC Cluster Admin' -Scope '@lab.CloudResourceTemplate(AKSAutomatic).Outputs[aksId]'
-New-AzRoleAssignment -SignInName '@lab.CloudPortalCredential(User1).Username' -RoleDefinitionName 'Grafana Admin' -Scope '@lab.CloudResourceTemplate(AKSAutomatic).Outputs[grafanaId]'
+New-AzRoleAssignment -SignInName '@lab.CloudPortalCredential(Admin).Username' -RoleDefinitionName 'Azure Kubernetes Service RBAC Cluster Admin' -Scope '@lab.CloudResourceTemplate(AKSAutomatic).Outputs[aksId]'
+New-AzRoleAssignment -SignInName '@lab.CloudPortalCredential(Admin).Username' -RoleDefinitionName 'Grafana Admin' -Scope '@lab.CloudResourceTemplate(AKSAutomatic).Outputs[grafanaId]'
 
 Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 Register-AzResourceProvider -ProviderNamespace "Microsoft.AppConfiguration"
